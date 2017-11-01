@@ -1,0 +1,345 @@
+<?php
+
+/*
+	Configuration for the Control Panel application
+	
+	Simmo
+	
+	This system makes the assumption that you have exactly two (2) public display projectors,
+	one for the left image and one for the right image in a stereo pair. Throughout the whole application
+	these projectors will have the ID labels "projector_right" and "projector_left".
+	
+	Core functionality will remain stable without this being true, but the projector specific integration will be 
+	completely useless. 
+	
+	As for the type of projector supported, please refer to parser-projectorStatus.php and interaction-projector.php
+*/
+
+
+
+// IP ADDRESSES
+$config['hosts'] = array(
+						'matrix' => '10.148.192.53',
+						'projector_right' => '10.148.192.48',
+						'projector_left' => '10.148.192.47'
+					);
+
+
+// CREDENTIALS
+$config['credentials'] = array(
+							'projector_right' => array('username'=>'admin1', 'password'=>'panasonic'),
+							'projector_left' => array('username'=>'admin1', 'password'=>'panasonic')
+						);
+
+
+// SHUTTER TIMER (how long to close the projector shutters for while switching)
+// Outputs that need this timeout must set the `isProjector` flag in the config below
+$config['shutter_timer'] = 300; // time in milliseconds
+
+
+// iBOOT DETAILS
+$config['iboot'] = array(
+						'host' => '10.148.192.50',
+						'port' => 80,
+						'password' => "\x1bPASS\x1b",
+						'commands' => array(
+										'query' => "q\r", 
+										'on' => "n\r", 
+										'off' => "f\r"
+									)
+					);
+
+
+// DISPLAY ORDER FOR INPUTS AND OUTPUTS 
+// (will be discarded if it does not match the $config['inputs'] and $config['outputs'] arrays -- you've been warned)
+$config['inputs_displayOrder']  = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 10, 12, 13, 15, 14);
+$config['outputs_displayOrder'] = array(1, 0, 3, 2, 5, 4, 7, 6, 9, 8, 10, 12, 11, 13, 14, 15);
+
+
+// PRESETS
+// Switching is defined in an associative array where the key is the display, and the value is the input (mon => inp.)
+$config['presets'] = array(
+						array(
+							'name' => 'Default workstation layout',
+							'switching' => array(2=>1, 3=>0, 4=>3, 5=>2, 6=>5, 7=>4, 8=>7, 9=>6, 10=>8),
+							'img' => '',
+							'enabled' => true
+						),
+						array(
+							'name' => 'Mocap #1 stereo projection',
+							'switching' => array(0=>1, 1=>0),
+							'img' => '',
+							'enabled' => true
+						),
+						array(
+							'name' => 'Mocap #2 stereo projection',
+							'switching' => array(0=>3, 1=>2),
+							'img' => '',
+							'enabled' => true
+						),
+						array(
+							'name' => 'Mocap #3 stereo projection',
+							'switching' => array(0=>5, 1=>4),
+							'img' => '',
+							'enabled' => true
+						),
+						array(
+							'name' => 'Oldie #2 stereo projection',
+							'switching' => array(0=>7, 1=>6),
+							'img' => '',
+							'enabled' => true
+						),
+					);
+
+
+// SWITCH INPUTS
+$config['inputs'] = array(
+						
+						// Input 0
+						array(
+							'name' => 'Mocap 1 <br /><strong>Left</strong>',
+							'img' => '',
+							'enabled' => true
+						),
+						
+						// Input 1
+						array(
+							'name' => 'Mocap 1 <br /><strong>Right</strong>',
+							'img' => '',
+							'enabled' => true
+						),
+						
+						// Input 2
+						array(
+							'name' => 'Mocap 2<br /><strong>Left</strong>',
+							'img' => '',
+							'enabled' => true
+						),
+						
+						// Input 3
+						array(
+							'name' => 'Mocap 2 <br /><strong>Right</strong>',
+							'img' => '',
+							'enabled' => true
+						),
+						
+						// Input 4
+						array(
+							'name' => 'Mocap 3 <br /><strong>Left</strong>',
+							'img' => '',
+							'enabled' => true
+						),
+						
+						// Input 5
+						array(
+							'name' => 'Mocap 3 <br /><strong>Right</strong>',
+							'img' => '',
+							'enabled' => true
+						),
+						
+						// Input 6
+						array(
+							'name' => 'Oldie 2 <br /><strong>Left</strong>',
+							'img' => '',
+							'enabled' => true
+						),
+						
+						// Input 7
+						array(
+							'name' => 'Oldie 2 <br /><strong>Right</strong>',
+							'img' => '',
+							'enabled' => true
+						),
+						
+						// Input 8
+						array(
+							'name' => 'Oldie Mac',
+							'img' => '',
+							'enabled' => true
+						),
+						
+						// Input 9
+						array(
+							'name' => 'Spare (hotplug)',
+							'img' => '',
+							'enabled' => true
+						),
+						
+						// Input 10
+						array(
+							'name' => 'Media server <br /><strong>Right</strong>',
+							'img' => '',
+							'enabled' => true
+						),
+						
+						// Input 11
+						array(
+							'name' => 'Media server <br /><strong>Left</strong>',
+							'img' => '',
+							'enabled' => true
+						),
+						
+						// Input 12
+						array(
+							'name' => 'Not in use',
+							'img' => '',
+							'enabled' => false
+						),
+						
+						// Input 13
+						array(
+							'name' => 'Not in use',
+							'img' => '',
+							'enabled' => false
+						),
+						
+						// Input 14
+						array(
+							'name' => 'Media server <br /><strong>Right</strong> (temp)',
+							'img' => '',
+							'enabled' => true
+						),
+						
+						// Input 15
+						array(
+							'name' => 'Media server <br /><strong>Left</strong> (temp)',
+							'img' => '',
+							'enabled' => true
+						)
+					);
+
+
+// SWITCH OUTPUTS
+$config['outputs'] = array(
+						
+						// Output 0
+						array(
+							'name' => 'Projector <br /><strong>Right</strong>',
+							'img' => '',
+							'isProjector' => true,
+							'projectorID' => 'projector_right',
+							'enabled' => true
+						),
+						
+						// Output 1
+						array(
+							'name' => 'Projector <br /><strong>Left</strong>',
+							'img' => '',
+							'isProjector' => true,
+							'projectorID' => 'projector_left',
+							'enabled' => true
+						),
+						
+						// Output 2
+						array(
+							'name' => 'Mocap 1 <br /><strong>Right</strong>',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						),
+						
+						// Output 3
+						array(
+							'name' => 'Mocap 1 <br /><strong>Left</strong>',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						),
+						
+						// Output 4
+						array(
+							'name' => 'Mocap 2 <br /><strong>Right</strong>',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						),
+						
+						// Output 5
+						array(
+							'name' => 'Mocap 2 <br /><strong>Left</strong>',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						),
+						
+						// Output 6
+						array(
+							'name' => 'Mocap 3 <br /><strong>Right</strong>',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						),
+						
+						// Output 7
+						array(
+							'name' => 'Mocap 3 <br /><strong>Left</strong>',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						),
+						
+						// Output 8
+						array(
+							'name' => 'Oldie 2 <br /><strong>Right</strong>',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						),
+						
+						// Output 9
+						array(
+							'name' => 'Oldie 2 <br /><strong>Left</strong>',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						),
+						
+						// Output 10
+						array(
+							'name' => 'Oldie Mac',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						),
+						
+						// Output 11
+						array(
+							'name' => 'Breakout monitor #1 <br />(stage right)',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						),
+						
+						// Output 12
+						array(
+							'name' => 'Breakout monitor #2 <br />(stage left)',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						),
+						
+						// Output 13
+						array(
+							'name' => 'Wireless virtual camera',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						),
+						
+						// Output 14
+						array(
+							'name' => '8x8 matrix relay',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						),
+						
+						// Output 15
+						array(
+							'name' => 'Sony TV',
+							'img' => '',
+							'isProjector' => false,
+							'enabled' => true
+						)
+					);
+?>									

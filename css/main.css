@@ -1,0 +1,665 @@
+/* MAIN LAYOUT AND MENU SYSTEM */
+
+html, body {
+	padding: 0;
+	margin: 0;
+	font-family: Tahoma, Verdana, Arial, sans-serif;
+	font-size: 0.95em;
+}
+
+body {
+	background: #fff url("../pics/light_grey.png") repeat left top;
+}
+
+#menu {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 37px;
+	/*border: 1px solid #000;*/
+	-webkit-box-shadow: 0px 1px 8px 0px rgba(50, 50, 50, 0.3);
+	-moz-box-shadow:    0px 1px 8px 0px rgba(50, 50, 50, 0.3);
+	box-shadow:         0px 1px 8px 0px rgba(50, 50, 50, 0.3);
+	/*margin-bottom: 5px;*/
+	z-index: 2;
+	position: relative;
+}
+
+#content {
+	z-index: 1;
+	padding: 0;
+	margin: 0 auto;
+	width: 1280px;
+	height: 750px;
+	border: 2px solid #d2d2d2;
+	border-top: none;
+	/*border-right: 1px solid #000;
+	border-left: 1px solid #000;
+	border-bottom: 1px solid #000;*/
+	whitespace: no-wrap;
+	overflow: hidden;
+}
+
+#menu ul {
+	list-style-type: none;
+	margin: 0px auto 0 auto;
+	padding: 0;
+	/*width: 1100px;*/
+	width: 100%;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.6);
+	/*border-top: 1px solid #000;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;*/
+	border-top: 4px solid #4fb132;
+	border-bottom: 1px solid #bbb;
+}
+
+#menu ul li {
+	display: inline;
+	/*float: left;*/
+	/*margin-right: 10px;*/
+}
+
+#menu ul li.last {
+	margin-right: 0;
+}
+
+#menu li > a:link, li > a:visited {
+	/*display: block;*/
+	display: inline-block;
+	/*width: 120px;*/
+	height: 25px;
+	font-weight: bold;
+	color: #d8ffcc;
+	background-color: #87cb73;
+	/*background: #98d785 url("../pics/gradient.png") repeat-x left top;*/
+	text-align: center;
+	padding: 4px 15px 4px 15px;
+	margin: 0;
+	text-decoration: none;
+	vertical-align: middle;
+	/*text-transform:uppercase;*/
+	line-height: 30px;
+}
+#menu li > a:hover, li > a:active {
+	background-image: none !important;
+	background-color: #4fb132 !important;
+	/*color: #fff;*/
+}
+.active_li, .active_li:hover, .active_li:active {
+	background-image: none !important;
+	background-color: #4fb132 !important;
+	color: #fff !important;
+}
+.tab_content {
+	background-color: #fff;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	/*line-height: 750px;*/
+	left: 0;
+	top: 0;
+}
+
+.active_li {
+	cursor: default;
+}
+
+
+
+/* MATRIX GRID */
+
+#matrix_control > button {
+	width: 140px;
+	height: 180px;
+	/*margin: 0 8px 40px 0; -- Overridden by jQuery UI */
+	padding: 0;
+	position: relative;
+	-webkit-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.1);
+	-moz-box-shadow:    0px 0px 4px 0px rgba(50, 50, 50, 0.1);
+	box-shadow:         0px 0px 4px 0px rgba(50, 50, 50, 0.1);
+}
+
+#matrix_control > button > span {
+	display: block;
+	position: absolute;
+	top: 5px;
+	left: 0;
+	right: 0;
+	width: 95%;
+	margin: 0 auto;
+	font-size: 0.9em;
+	color: #4b9d32;
+	font-weight: 700;
+}
+
+p {
+	text-align: left;
+	padding: 0 70px 0 70px;
+	margin: 0 0 70px 0;
+}
+
+
+h1 {
+	margin: 0 0 20px 0;
+	padding: 35px 0 0 70px;
+	text-align: left;
+	border-bottom: 1px solid #aaa;
+}
+
+hr {
+	height: 1px;
+	margin: 0;
+	padding: 0;
+	visibility: hidden;
+	clear: both;
+}
+
+.clear {
+	clear: both;
+}
+
+.thumbs {
+	color: #6b6b6b;
+	/*background-color: #fefefe;*/
+	background: #fefefe url('../pics/light_wool3.png') repeat top left;
+	border: 1px solid #6bb953;
+	width: 90px; /* PS: plus padding */
+	height: 65px;
+	padding: 0 10px 0 10px;
+	font-size: 0.9em;
+	/*line-height: 65px;*/
+	overflow: hidden;
+	cursor: default;
+	pointer-events: none;
+	display: table;
+}
+
+
+.thumbs > .content {
+	display: table-cell; 
+	vertical-align: middle; 
+	text-align: center;
+}
+
+.thumbs > .header {
+	display: inline-block;
+	position: absolute;
+	/*top: 0;*/
+	top: 25px;
+	/*left: 0;*/
+	right: -12px;
+	/*margin: 0 auto;*/
+	font-style: normal;
+	color: #d5d5d5;
+	
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50% 50%;
+	-ms-transform-origin: 50% 50%;
+	-o-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+}
+
+.projector_status {
+	font-size: 0.9em;
+	/*color: #c22727;*/
+	/*background-color: #c22727;*/
+	width: 138px;
+	height: 20px;
+	pointer-events: none;
+}
+
+
+
+/* INPUTS POPUP */
+
+#input_panel {
+	height: 300px;
+	width: 100%;
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+	background: #fefefe url('../pics/light_wool.png') repeat top left;
+	z-index: 999;
+	position: absolute;
+	top: 230px;
+	right: 0;
+	left: 0;
+	margin: 0 auto;
+	-webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.6);
+	-moz-box-shadow:    0px 0px 8px 0px rgba(50, 50, 50, 0.6);
+	box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.6);
+	display: none;
+}
+
+
+#input_panel div.ui-state-default, #projector_detail_control > div.ui-state-default {
+	width: 17px;
+	height: 17px;
+	cursor: pointer;
+	position: absolute;
+	top: 3px;
+	right: 3px;
+}
+
+#input_panel > h2 {
+	font-weight: normal;
+	font-size: 1.0em;
+	margin: 0 0 50px 0;
+	padding: 4px 0 4px 0;
+	/*border-bottom: 1px solid #aaa;*/
+	/*background-color: rgba(255, 255, 255, 1);*/
+	background-color: #4fb132;
+	color: #fff;
+}
+
+#input_panel > h2 > span {
+	font-weight: bold;
+}
+
+#input_panel > button {
+	width: 120px;
+	height: 80px;
+	padding: 0 10px 0 10px;
+	margin: 0;
+	font-size: 0.9em;
+	color: #6b6b6b;
+}
+
+#input_panel .ui-state-hover-special, #projector_detail_control .ui-state-hover-special, #projector_control .common .ui-state-hover-special {
+	background: #dadada url("smoothness/images/ui-bg_glass_75_dadada_1x400.png") 50% 50% repeat-x;
+	border: 1px solid #4b9d32;
+}
+
+
+
+/* PROJECTOR TAB */
+.left, .right {
+	width: 595px;
+	margin-top: 10px;
+	margin-left: 35px;
+	/*display: inline-block;*/
+	float: left;
+	text-align: left;
+	position: relative;
+	color: #6b6b6b;
+}
+.right {
+	margin-left: 20px;
+}
+.common {
+	width: 1210px;
+	margin: 20px 0 0 35px;
+	text-align: left;
+}
+
+.left > div, .right > div, .common > div {
+	border: 1px solid #ababab;
+	border-top: none;
+	height: 340px;
+	margin: 0 0 10px 0;
+	background: #fefefe url('../pics/light_wool.png') repeat top left;
+	padding: 10px 5px 5px 5px;
+}
+.common > div {
+	height: 103px;
+	padding: 5px;
+}
+
+.left2, .right2, .left3 {
+	width: 150px;
+	float: left;
+	text-align: center;
+	margin-top: 15px;
+	/*height: 90px;*/
+	padding: 5px 0;
+}
+
+.left3 {
+	margin-left: 149px;
+	padding-left: 15px;
+	border-left: 1px solid #bbb;
+}
+
+.common .left2, .common .right2, .common .left3 {
+	margin-top: 5px;
+}
+
+.left2 > span, .right2 > span, .left3 > span{
+	font-size: 0.9em;
+	display: block;
+}
+
+#projector_control .left2 button, #projector_control .right2 button, #projector_control .left3 button {
+	margin: 5px 0;
+}
+
+#common_buttons_text {
+	text-align: left;
+	margin: 27px 0;
+	padding: 8px 6px 8px 20px;
+	width: 250px;
+	color: #6b6b6b;
+}
+
+#projector_control h2 {
+	color: #4b9d32;
+	border-bottom: 1px solid #ababab;
+	background-color: #4fb132;
+	/*color: #4b9d32;*/
+	color: #fff;
+	padding: 3px 0 3px 6px;
+	font-weight: bold;
+	margin: 0;
+	font-size: 1.0em;
+}
+
+#projector_control h3, #projector_control h4 {
+	display: inline-block;
+	width: 100px;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+}
+
+#projector_control h4 {
+	width: 170px;
+	font-weight: normal;
+	margin-left: 15px;
+}
+
+.projector_model {
+	position: absolute;
+	top: 4px;
+	right: 5px;
+	font-size: 0.85em;
+	color: #d8ffcc;
+}
+
+#projector_control button {
+	width: 125px;
+	height: 75px;
+	margin: 15px 3px 5px 0;
+	padding: 2px 5px;
+}
+
+#projector_control button span {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+
+#projector_control p {
+	margin: 0 0 30px 0;
+}
+
+#projector_control .progressbar {
+	/*background: #cccccc url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") 50% 50% repeat-x;*/
+}
+
+#projector_detail_control {
+	width: 100%;
+	height: 445px;
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+	background: #fefefe url('../pics/light_wool.png') repeat top left;
+	z-index: 999;
+	position: absolute;
+	top: 160px;
+	right: 0;
+	left: 0;
+	margin: 0 auto;
+	-webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.6);
+	-moz-box-shadow:    0px 0px 8px 0px rgba(50, 50, 50, 0.6);
+	box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.6);
+	display: none;
+}
+
+#projector_detail_control .left, #projector_detail_control .right {
+	width: 600px;
+	height: 400px;
+	padding: 0 20px;
+	margin: 10px 0;
+	border-right: 1px solid #bbb;
+}
+#projector_detail_control .right {
+	width: 595px;
+	border: none;
+}
+
+#projector_detail_control > div > div.ui-state-default {
+	width: 17px;
+	height: 17px;
+	cursor: pointer;
+	margin: 10px;
+	padding: 0;
+}
+
+#projector_detail_control img {
+	cursor: pointer;
+	background: #e6e6e6 url("smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png") 50% 50% repeat-x;
+	border: 1px solid #bbb;
+}
+
+.projector_control_table {
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 auto;
+}
+
+.vertical_arrow {
+	padding: 8px 4px; 
+}
+
+.horizontal_arrow {
+	padding: 4px 8px;
+}
+
+.center_td {
+	width: 50px;
+	height: 50px;
+	padding: 5px;
+}
+
+.projector_control_table .disabled {
+	opacity: 0.35;
+}
+
+.th_top, .th_right, .th_bottom, .th_left {
+	font-size: 0.9em;
+	opacity: 0.6;
+	width: 30px;
+	height: 15px;
+	padding: 4px;
+}
+
+.th_right, .th_left {
+	width: 60px;
+	text-align: left;
+}
+
+.th_left {
+	text-align: right;
+}
+
+
+
+/* PRESETS TAB */
+#presets button {
+	width: 400px;
+	height: 75px;
+	margin: 3px 3px 5px 0;
+	padding: 2px 5px;
+	display: block;
+}
+
+#presets button span {
+	padding: 0;
+	margin: 0;
+	text-align: left;
+	padding-left: 25px;
+}
+
+
+
+
+/* iBoot TAB */
+#iboot {
+	text-align: left;
+}
+
+.padding {
+	padding: 0 0 0 70px;
+}
+
+#iboot .error_text {
+	display: block;
+	width: 260px;
+	text-align: center;
+}
+
+#iboot button {
+	width: 125px;
+	height: 75px;
+	margin: 3px 3px 5px 0;
+	padding: 2px 5px;
+}
+
+#iboot button span {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+
+
+/* CONFIG TAB */
+#php_output {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	text-align: left;
+	margin: 0 5px 0 35px;
+	width: 1200px;
+	height: 550px;
+	display: block;
+}
+
+#config p {
+	margin-bottom: 50px;
+}
+
+#save_status {
+	position: absolute;
+	right: 30px;
+	top: 155px;
+}
+
+#config .CodeMirror {
+	text-align: left;
+	width: 1220px;
+	margin: 0 5px 0 35px;
+	height: 550px;
+	color: initial;
+	background: #fefefe url('../pics/light_wool.png') repeat top left;
+	border: 1px solid #bbb;
+}
+
+
+/* Misc elements */
+#dialog p, #confirmPower p {
+	margin: 0;
+	padding: 0;
+}
+
+.green {
+	color: #4fb132;
+}
+
+.red {
+	color: #c22727;
+}
+
+.disabled {
+	opacity: 0.5;
+	cursor: default !important;
+}
+
+
+
+/* PROGRESS BARS */
+
+.progressbar {
+	display: inline-block;
+	position: relative;
+	top: 3px;
+	width: 370px;
+	height: 15px;
+}
+
+.progressbar span {
+	position: absolute;
+	left: 15px;
+	font-size: 0.7em;
+	color: #6b6b6b;
+}
+
+.ui-progressbar-value {
+	color: #fff;
+	font-size: 0.7em;
+	font-weight: normal;
+	padding: 0 0 0 15px;
+	z-index: 10;
+	overflow: hidden;
+	whitespace: nowrap;
+	position: absolute;
+}
+
+.projector_status .progressbar {
+	width: 110px;
+	top: 0;
+}
+
+.projector_status .progressbar span, .projector_status .progressbar .ui-progressbar-value {
+	padding: 0 0 0 25px;
+	left: 0;
+}
+
+
+/* JQUERY UI TWEAKS */
+.ui-button {
+	margin: 0 5px 45px 0; 
+}
+
+.ui-button-text-only .ui-button-text {
+	padding: 0;
+}
+
+.ui-state-default {
+	border: 1px solid #ababab;
+	/*background: #f6f6f6 url("ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png") 50% 50% repeat-x;*/
+	/*background: #f6f6f6 url("green_button_default.png") 50% 50% repeat-x;*/
+}
+
+.ui-state-hover {
+	/*background: #f6f6f6 url("ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png") 50% 50% repeat-x;*/
+	/*background: #f6f6f6 url("green_button_hover.png") 50% 50% repeat-x;*/
+	/*border: 1px solid #4fb132;*/
+	border: 1px solid #4b9d32;
+}
+
+.ui-state-disabled {
+	pointer-events: none;
+}
+
+.ui-button-text {
+	min-width: 60px;
+}
